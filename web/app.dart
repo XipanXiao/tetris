@@ -11,13 +11,19 @@ import 'grid.dart';
   styleUrls: ['app.css'],
 )
 class AppComponent {
+  static const types = ['I', 'L', 'J', 'O', 'T', 'S', 'Z'];
   final grid = Grid();
 
   void onKeyUp(KeyboardEvent event) {
     switch (event.keyCode) {
-      case KeyCode.LEFT:
+      case KeyCode.UP:
         grid.rotateActiveBlock();
+        break;
+      case KeyCode.LEFT:
+        grid.moveActiveBlock(-1);
         break;
     }
   }
+
+  void generate(String type) => grid.generate(type);
 }

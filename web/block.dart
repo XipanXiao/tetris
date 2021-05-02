@@ -20,6 +20,11 @@ abstract class Tetromino {
     Direction.SOUTH: Direction.EAST,
   };
 
+  static final _types = {
+    'I': (Point position) => TetrominoI(position),
+    'L': (Point position) => TetrominoL(position),
+  };
+
   /// Direction of the block
   Direction direction;
 
@@ -34,10 +39,14 @@ abstract class Tetromino {
   }
 
   void move(int dx) {
-    position.x += dx;
+    if (position.x + dx < 1) return;
+
+    position.x = position.x + dx;
   }
 
   List<Point> getPoints();
+
+  static Tetromino fromType(String type, Point point) => _types[type](point);
 }
 
 class TetrominoI extends Tetromino {
@@ -58,5 +67,25 @@ class TetrominoI extends Tetromino {
             Point(position.x, position.y + 1),
             Point(position.x, position.y + 2),
           ];
+  }
+}
+
+class TetrominoL extends Tetromino {
+  TetrominoL(Point position) : super('L', Direction.WEST, position);
+
+  @override
+  List<Point> getPoints() {
+    switch (direction) {
+      case Direction.WEST:
+        return [
+          Point(position.x - 2, position.y),
+          Point(position.x - 1, position.y),
+          Point(position.x, position.y),
+          Point(position.x, position.y - 1),
+        ];
+        break;
+      default:
+        return [];
+    }
   }
 }

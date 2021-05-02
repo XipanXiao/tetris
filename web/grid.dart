@@ -24,4 +24,16 @@ class Grid {
     activeBlock.rotate();
     drawActiveBlock();
   }
+
+  void moveActiveBlock(int dx) {
+    drawActiveBlock(erase: true);
+    activeBlock.move(dx);
+    drawActiveBlock();
+  }
+
+  void generate(String type) {
+    drawActiveBlock(erase: true);
+    activeBlock = Tetromino.fromType(type, Point(5, 5));
+    drawActiveBlock();
+  }
 }

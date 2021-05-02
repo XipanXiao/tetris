@@ -1,3 +1,10 @@
+<div class="generators">
+  <div *ngFor="let letter of types"
+        class="{{letter}}"
+        (click)="generate(letter)">
+    {{letter}}
+  </div>
+</div>
 <table (keyup)="onKeyUp" tabindex="0">
   <tr *ngFor="let row of grid.cells">
     <td *ngFor="let cell of row" [ngClass]="cell"></td>

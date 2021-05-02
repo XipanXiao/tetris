@@ -11,3 +11,40 @@ td {
 .I {
   background-color: aqua;
 }
+
+.L {
+  background-color: orange;
+}
+
+.J {
+  background-color: blue;
+}
+
+.O {
+  background-color: yellow;
+}
+
+.T {
+  background-color: green;
+}
+
+.S {
+  background-color: purple;
+}
+
+.Z {
+  background-color: red;
+}
+
+.generators {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 300px;
+}
+
+.generators > div {
+  cursor: pointer;
+  text-align: center;
+  width: 48px;
+}
