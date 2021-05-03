@@ -22,6 +22,9 @@ class AppComponent {
       case KeyCode.LEFT:
         grid.moveActiveBlock(-1);
         break;
+      case KeyCode.RIGHT:
+        grid.moveActiveBlock(1);
+        break;
     }
   }
 
