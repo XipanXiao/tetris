@@ -1,20 +1,18 @@
 import 'block.dart';
 
 class Grid {
-  static const width = 10;
-  static const height = 20;
-  final cells = List<List<String>>.generate(
-      height, (_) => List<String>.filled(width, null));
+  final cells = List<List<String>>.generate(Tetromino.gridHeight,
+      (_) => List<String>.filled(Tetromino.gridWidth, null));
 
   Tetromino activeBlock;
 
   Grid() {
-    activeBlock = TetrominoI(Point(5, 5));
+    activeBlock = TetrominoI();
     drawActiveBlock();
   }
 
   void drawActiveBlock({bool erase = false}) {
-    for (var point in activeBlock.getPoints()) {
+    for (var point in activeBlock.blocks) {
       cells[point.y][point.x] = erase ? null : activeBlock.type;
     }
   }
@@ -33,7 +31,7 @@ class Grid {
 
   void generate(String type) {
     drawActiveBlock(erase: true);
-    activeBlock = Tetromino.fromType(type, Point(5, 5));
+    activeBlock = Tetromino.fromType(type);
     drawActiveBlock();
   }
 }
